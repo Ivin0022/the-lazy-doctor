@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <title>Patients</title>
+</head>
+<body>
+
+    <div class="p-5"></div>
+    <div class="container">
+        <div class="row">
+            <div class="offset-4 col-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between">
+                            <b>Patients</b>
+                            <a href="{% url 'create' %}">add</a>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                    {% for patient in patient_list %}
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div>
+                                <a href="{% url 'detail' patient.pk %}">{{ patient.name }}</a>
+                            </div>
+                            <div>
+                                <a href="{% url 'update' patient.pk %}">Edit</a>
+                                &nbsp;
+                                <a href="{% url 'delete' patient.pk %}">Delete</a>
+                            </div>
+                        </li>
+                    {% empty %}
+                        <p class="text-center p-5">no patient yet....</p>
+                    {% endfor %}
+                    </ul>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
